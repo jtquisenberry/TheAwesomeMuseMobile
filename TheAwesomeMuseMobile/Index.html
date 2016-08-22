@@ -88,7 +88,8 @@
 
     <script src="/Scripts/modernizr-2.8.3.js"></script>
     <script src="/Scripts/jquery-3.1.0.js"></script>
-    <script src="/Scripts/angular.min.js"></script>
+    <script src="/Scripts/jquery-3.1.0.js"></script>
+    <script src="/Scripts/knockout-3.4.0.js"></script>
     <script src="/Scripts/angular-route.min.js"></script>
     
   
@@ -321,27 +322,27 @@
                         
                     </div>
                 </article>
-         d
+         
+        <div data-bind="foreach: RSSArticles">
                 <div class="EmbeddedNews" lang="en">
-                    <div>
-                        <blockquote class="News">
-                            <div class="News-header">
-                                <div>
-                                    <span class="News-authorName" data-scribe="element:name">Medical Marijuana, Inc.&#39;s Subsidiary HempMeds(R) Launches Revamped Website ...</span>
-                                </div>
-                                <div class="Tweet-author" data-scribe="component:author">
-                                    <span class="News-authorName" data-scribe="element:name">Marketwired (press release) - Aug 18, 2016</span>
+                    <div class="EmbeddedNews">
+                        <blockquote class="News" >
+                            <div class="News-header" >
+                                <div class="News-header2">
+                                    <span style="font-size:14px;" data-bind="text: title" class="News-authorName" data-scribe="element:name"></span>
                                 </div>
                             </div>
                             <div class="News-body" data-scribe="component:tweet">
-                                <p class="News-text e-entry-title" lang="en" dir="ltr">SAN DIEGO, CA --(Marketwired - August 18, 2016) - Medical Marijuana, Inc. ( OTC PINK : MJNA) is pleased to announce today that its subsidiary and master distributor and sales arm HempMeds&#174; launched a revamped website, https://hempmedspx.</p>
-                                <div class="News-metadata">
+                                <p class="News-text e-entry-title" lang="en" dir="ltr" data-bind="html: description">SAN DIEGO, CA --(Marketwired - August 18, 2016) - Medical Marijuana, Inc. ( OTC PINK : MJNA) is pleased to announce today that its subsidiary and master distributor and sales arm HempMeds&#174; launched a revamped website, https://hempmedspx.</p>
+                                <div class="News-metadata" data-bind="text: pubDate">
                                     8/18/2016 12:00:00 AM
                                 </div>
                             </div>
                         </blockquote>
                     </div>
                 </div>
+            </div>
+
         
 
             </main><aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="Primary Sidebar" itemscope itemtype="http://schema.org/WPSideBar">
@@ -372,7 +373,7 @@
 
 
     <div id="wpfront-scroll-top-container"><img src="http://www.theawesomemuse.com/wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="" /></div>
-
+    <script src="/Scripts/app.js"></script>
    
    
 </body>
