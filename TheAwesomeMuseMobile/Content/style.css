@@ -1,4 +1,4 @@
-﻿/*  
+/*  
 Theme Name: Pretty Chic 
 Theme URI: http://my.studiopress.com/themes/pretty-chic/
 Description: A Pretty Chic WordPress Theme   
@@ -2586,96 +2586,5 @@ Color Options
 	border-bottom: 2px solid #727272;
 	border-top: 2px solid #727272;
 }
-
-/* Begin News*/
-
-.EmbeddedNews {
-    background-color:rgb(255, 255, 255);
-    max-width:100%;
-        border-top-width: 0px;
-    border-right-width:0px;
-    border-bottom-width:0px;
-    border-left-width:0px;
-    border-top-style:solid;
-    border-right-style:solid;
-    border-bottom-style:solid;
-    border-left-style:solid;
-    border-top-color:#808080;
-    border-right-color:#808080;
-    border-bottom-color:#808080;
-    border-left-color:#808080;
-    border-radius:4px;
-    margin:5px;
-   
-}
-
-blockquote.News {
-    padding-top:3px;
-    padding-right:3px;
-    padding-bottom:3px;
-    padding-left:3px;
-    margin-bottom:3px;
-        border-top-width: 1px;
-    border-right-width:1px;
-    border-bottom-width:1px;
-    border-left-width:1px;
-    border-top-style:solid;
-    border-right-style:solid;
-    border-bottom-style:solid;
-    border-left-style:solid;
-    border-left-color:black;
-}
-    
-.News-authorName{
-    cursor:text;
-    direction:ltr;
-    font-size:10px;
-    font-weight:600;
-}
-
-.News-authorScreenName{
-    cursor:text;
-    direction:ltr;
-    font-size:10px;
-}
-
-.News-text{
-    cursor:text;
-    direction:ltr;
-    font-size:10px;
-    padding:4px;
-}
-
-.News-metadata{
-    cursor:text;
-    direction:ltr;
-    font-size:10px;
-    font-weight:600;
-    padding:4px;
-}
-
-blockquote.News{
-	background: #f5f5f5;
-	margin: 0px 0;
-	padding: 0px;
-}
-
-.News-authorName{
-
-}
-
-
-
-.News-header2{
-    font-size:14px;
-    border-style:solid;
-    border-width:1px;
-    padding:4px;
-    background-color:#fd668d;
-    color:white;
-    
-}
-
-/* End News */
 
 
