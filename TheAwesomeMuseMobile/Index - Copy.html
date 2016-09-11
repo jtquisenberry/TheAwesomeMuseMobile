@@ -1,0 +1,390 @@
+﻿<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8" />
+    <title>Page not found - The Awesome Muse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style type="text/css">
+        .slide-excerpt {
+            width: 50%;
+        }
+
+        .slide-excerpt {
+            bottom: 0;
+        }
+
+        .slide-excerpt {
+            right: 0;
+        }
+
+        .flexslider {
+            max-width: 920px;
+            max-height: 400px;
+        }
+
+        .slide-image {
+            max-height: 400px;
+        }
+    </style>
+    <style type="text/css">
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            .slide-excerpt {
+                display: none !important;
+            }
+        }
+    </style>
+
+
+
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+    </style>
+    <link rel='stylesheet' id='yarppWidgetCss-css' href='http://www.theawesomemuse.com/wp-content/plugins/yet-another-related-posts-plugin/style/widget.css?ver=4.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='pretty-chic-css' href='http://www.theawesomemuse.com/wp-content/themes/Pretty%20Chic/style.css?ver=1.0.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='dashicons-css' href='http://www.theawesomemuse.com/wp-includes/css/dashicons.min.css?ver=4.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='simple-alert-boxes-css' href='http://www.theawesomemuse.com/wp-content/plugins/simple-alert-boxes/css/simple-alert-boxes.css?ver=1.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpfront-scroll-top-css' href='http://www.theawesomemuse.com/wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.css?ver=1.4.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='google-fonts-css' href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%7CPlayfair+Display%3A%40import+url%28http%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPlayfair+Display%3A400%2C700%2C400italic%2C700italic%29%3B&#038;ver=1.0.0' type='text/css' media='all' />
+    
+    <style type="text/css">
+        .enews .screenread {
+            height: 1px;
+            left: -1000em;
+            overflow: hidden;
+            position: absolute;
+            top: -1000em;
+            width: 1px;
+        }
+    </style>
+    
+
+    <style type="text/css">
+        .site-title a {
+            background: url(http://www.theawesomemuse.com/wp-content/uploads/2016/06/cropped-The-Awesome-Muse.jpg) no-repeat !important;
+        }
+    </style>
+    <!--[if lt IE 9]><script src="http://www.theawesomemuse.com/wp-content/themes/genesis/lib/js/html5shiv.min.js"></script><![endif]-->
+
+    <style type="text/css">
+        .broken_link, a.broken_link {
+            text-decoration: line-through;
+        }
+    </style>
+
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+    <script src="/Scripts/jquery-3.1.0.js"></script>
+    <script src="/Scripts/jquery-3.1.0.js"></script>
+    <script src="/Scripts/knockout-3.4.0.js"></script>
+    <script src="/Scripts/angular-route.min.js"></script>
+    
+  
+    
+
+    <script>
+
+        $(document).ready(function () {
+
+            getFeedData();
+        });
+
+
+        window.localJsonpCallback = function (data) {
+            alert("moo");
+        };
+        window.m = "";
+
+        var getFeedData = function () {
+            //alert("Hello from getFeedData");
+
+            //$.get('http://www.theawesomemuse.com/feed', function (data) {
+            //    $(data).find("entry").each(function () { // or "item" or whatever suits your feed
+            //        var el = $(this);
+
+            //        console.log("------------------------");
+            //        console.log("title      : " + el.find("title").text());
+            //        console.log("author     : " + el.find("author").text());
+            //        console.log("description: " + el.find("description").text());
+            //    });
+            //});
+
+            $("#main-ul").empty();
+            $("#main-ul").css("background-color", "yellow");
+            var mmmm = $("#main-ul")[0];
+
+
+            $.ajax({
+                type: "GET",
+                url: 'http://www.theawesomemuse.com/feed',
+                dataType : 'xml',
+                success : function(data)
+                {
+                    console.log(data);
+                    var zzz = $(data).find("item").each(function () {
+                        var el = $(this);
+                        console.log(el.find("title").text());
+                        //$("#main-div")[0].append(el.find("title"));
+                        $("#main-ul").append("<li>" + el.find("title").text() + 
+                            "<p>" + el.find("link").text() + "</p>" +
+                            "<p>" + el.find("comments").text() + "</p>" +
+                            "<p>" + el.find("pubDate").text() + "</p>" +
+                            "<p>" + el.find("description").text() + "</p>" +
+                        "</li>");
+
+                    });
+
+                },
+                error: function (xhr, status, error)
+                {
+                    console.log(error);
+                },
+              
+
+            });
+
+
+
+
+            //function jsonp(url, callback) {
+            //    var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+            //    window[callbackName] = function (data) {
+            //        delete window[callbackName];
+            //        document.body.removeChild(script);
+            //        callback(data);
+            //    };
+
+            //    var script = document.createElement('iframe');
+            //    script.className = 'moocow';
+            //    var y = document.body.appendChild(script);
+            //    script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
+            //    //alert(script.src);
+            //    try{
+            //        var myIframe = document.getElementsByTagName('iframe')[0];
+            //        myIframe.src = script.src;
+            //        myIframe.focus();
+
+            //       // window.m = document.body.appendChild(script);
+            //        //document.body = m;
+            //        var i = 0;
+            //    }
+            //    catch (err) {
+            //        alert(err);
+            //    }
+            //}
+
+            //jsonp('https://sports.yahoo.com/mlb/rss.xml', function (data) {
+            //    alert(data);
+            //});
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //$.get({
+            //    url: 'https://www.sec.gov/rss/litigation/litreleases.xml',
+            //    success: function (feed) {
+            //        console.log(feed.title);
+            //        // do more stuff here
+            //    },
+            //    error: function(errormsg){
+            //        console.log(errormsg)
+            //    },
+            //    datatype:jsonp
+            //});
+        };
+
+        function localJsonpCallback(json) {
+            if (!json.Error) {
+                $('#resultForm').submit();
+            }
+            else {
+                $('#loading').hide();
+                $('#userForm').show();
+                alert(json.Message);
+            }
+        }
+
+
+    </script>
+
+
+
+
+
+
+</head>
+<body class="error404 custom-header header-image content-sidebar prettychic-pink" itemscope itemtype="http://schema.org/WebPage">
+    <div class="site-container">
+        <header class="site-header" itemscope itemtype="http://schema.org/WPHeader">
+            <div class="wrap">
+                <div class="title-area"><p class="site-title" itemprop="headline"><a href="http://www.theawesomemuse.com/">The Awesome Muse</a></p><p class="site-description" itemprop="description">Inspiration Curation for Beauty, Cuisine, Culture, Entertainment, Fashion, and Society.</p></div><div class="widget-area header-widget-area">
+                    <section id="nav_menu-2" class="widget widget_nav_menu">
+                        <div class="widget-wrap">
+                            <nav class="nav-header" itemscope itemtype="http://schema.org/SiteNavigationElement">
+                                <ul id="menu-header" class="menu genesis-nav-menu">
+                                    <li id="menu-item-58" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-58"><a href="http://theawesomemuse.com" itemprop="url"><span itemprop="name">home</span></a></li>
+                                    <li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37">
+                                        <a href="http://www.theawesomemuse.com/about/" itemprop="url"><span itemprop="name">Pages</span></a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-743" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-743"><a href="page1.html" itemprop="url"><span itemprop="name">Comment Policy</span></a></li>
+                                            <li id="menu-item-782" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-782"><a href="http://www.theawesomemuse.com/disclaimers/" itemprop="url"><span itemprop="name">Disclaimer</span></a></li>
+                                            <li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-218"><a href="http://www.theawesomemuse.com/about/disclosures/" itemprop="url"><span itemprop="name">Disclosures</span></a></li>
+                                            <li id="menu-item-231" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="http://www.theawesomemuse.com/about/privacy-policy/" itemprop="url"><span itemprop="name">Privacy Policy</span></a></li>
+                                            <li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38"><a href="http://www.theawesomemuse.com/about/terms-of-use/" itemprop="url"><span itemprop="name">Terms of Use</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37">
+                                        <a href="http://www.theawesomemuse.com/about/" itemprop="url"><span itemprop="name">About</span></a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-41" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-41">
+                                                <a href="http://www.theawesomemuse.com/about/meet-the-muses/" itemprop="url"><span itemprop="name">Meet the Muses</span></a>
+                                                <ul class="sub-menu">
+                                                    <li id="menu-item-175" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-175"><a href="http://www.theawesomemuse.com/about/meet-the-muses/jennifer-quisenberry/" itemprop="url"><span itemprop="name">Jennifer Quisenberry</span></a></li>
+                                                    <li id="menu-item-174" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-174"><a href="http://www.theawesomemuse.com/about/meet-the-muses/carmelita-bouie/" itemprop="url"><span itemprop="name">Carmelita Bouie</span></a></li>
+                                                    <li id="menu-item-173" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="http://www.theawesomemuse.com/about/meet-the-muses/lo-brewer-2/" itemprop="url"><span itemprop="name">Lo Brewer</span></a></li>
+                                                    <li id="menu-item-190" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-190"><a href="http://www.theawesomemuse.com/about/meet-the-muses/layne-bruner/" itemprop="url"><span itemprop="name">Layne Bruner</span></a></li>
+                                                    <li id="menu-item-171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-171"><a href="http://www.theawesomemuse.com/about/meet-the-muses/kim-jones/" itemprop="url"><span itemprop="name">Kim Jones</span></a></li>
+                                                    <li id="menu-item-172" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-172"><a href="http://www.theawesomemuse.com/about/meet-the-muses/cami-kidder/" itemprop="url"><span itemprop="name">Cami Kidder</span></a></li>
+                                                    <li id="menu-item-904" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-904"><a href="http://www.theawesomemuse.com/about/meet-the-muses/kristen-wilson/" itemprop="url"><span itemprop="name">Kristen Wilson</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="menu-item-743" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-743"><a href="http://www.theawesomemuse.com/about/comment-policy/" itemprop="url"><span itemprop="name">Comment Policy</span></a></li>
+                                            <li id="menu-item-782" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-782"><a href="http://www.theawesomemuse.com/disclaimers/" itemprop="url"><span itemprop="name">Disclaimer</span></a></li>
+                                            <li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-218"><a href="http://www.theawesomemuse.com/about/disclosures/" itemprop="url"><span itemprop="name">Disclosures</span></a></li>
+                                            <li id="menu-item-231" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="http://www.theawesomemuse.com/about/privacy-policy/" itemprop="url"><span itemprop="name">Privacy Policy</span></a></li>
+                                            <li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38"><a href="http://www.theawesomemuse.com/about/terms-of-use/" itemprop="url"><span itemprop="name">Terms of Use</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-819" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-819"><a href="http://www.theawesomemuse.com/category/blog/" itemprop="url"><span itemprop="name">Blog</span></a></li>
+                                    <li id="menu-item-193" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-193">
+                                        <a href="http://www.theawesomemuse.com/about/pr/" itemprop="url"><span itemprop="name">PR</span></a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="http://www.theawesomemuse.com/about/media-kit/" itemprop="url"><span itemprop="name">Media Kit</span></a></li>
+                                            <li id="menu-item-664" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-664"><a href="http://www.theawesomemuse.com/about/pr/sponsored-posts-awesome-muse/" itemprop="url"><span itemprop="name">Sponsored Posts</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-1160" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1160"><a href="http://www.theawesomemuse.com/shop/" itemprop="url"><span itemprop="name">Shop</span></a></li>
+                                    <li id="menu-item-54" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-54">
+                                        <a href="http://www.theawesomemuse.com/writing-opportunities/" itemprop="url"><span itemprop="name">Writing</span></a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="http://www.theawesomemuse.com/writing-opportunities/featured-writer-awesome-muse/" itemprop="url"><span itemprop="name">Be a Featured Writer on The Awesome Muse</span></a></li>
+                                            <li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="http://www.theawesomemuse.com/writing-opportunities/become-regularly-contributing-writer/" itemprop="url"><span itemprop="name">Become a Muse</span></a></li>
+                                            <li id="menu-item-616" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-616"><a href="http://www.theawesomemuse.com/writing-opportunities/friends-awesome-things/" itemprop="url"><span itemprop="name">Friends Doing Awesome Things</span></a></li>
+                                            <li id="menu-item-56" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-56"><a href="http://www.theawesomemuse.com/writing-opportunities/guest-blogging-opportunities/" itemprop="url"><span itemprop="name">Guest Blogging Opportunities</span></a></li>
+                                            <li id="menu-item-203" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-203"><a href="http://www.theawesomemuse.com/writing-opportunities/post-guidelines/" itemprop="url"><span itemprop="name">Post Guidelines and Submissions</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28"><a href="http://www.theawesomemuse.com/contact/" itemprop="url"><span itemprop="name">Contact</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </section>
+                    <section id="text-8" class="widget widget_text">
+                        <div class="widget-wrap">
+                            <div class="textwidget"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </header><div class="site-inner">
+
+            <main class="content">
+
+                <article class="page type-page status-publish entry" itemscope="" itemtype="http://schema.org/CreativeWork">
+                    <header class="entry-header"><h1 class="entry-title" itemprop="headline">Articles</h1></header>
+                    <div id="main-div" class="entry-content" itemprop="text">
+                        Articles
+                        <p></p>
+                        <button onclick="getFeedData()">Click me</button> 
+                        <p></p> 
+                        <ul id="main-ul">
+
+                        </ul>
+                        
+                    </div>
+                </article>
+         
+        <div data-bind="foreach: RSSArticles">
+                <div class="EmbeddedNews" lang="en">
+                    <div class="EmbeddedNews">
+                        <blockquote class="News" >
+                            <div class="News-header" >
+                                <div class="News-header2">
+                                    <span style="font-size:14px;" data-bind="text: title" class="News-authorName" data-scribe="element:name"></span>
+                                </div>
+                            </div>
+                            <div class="News-body" data-scribe="component:tweet">
+                                <p class="News-text e-entry-title" lang="en" dir="ltr" data-bind="html: description">SAN DIEGO, CA --(Marketwired - August 18, 2016) - Medical Marijuana, Inc. ( OTC PINK : MJNA) is pleased to announce today that its subsidiary and master distributor and sales arm HempMeds&#174; launched a revamped website, https://hempmedspx.</p>
+                                <div class="News-metadata" data-bind="text: pubDate">
+                                    8/18/2016 12:00:00 AM
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+        
+
+            </main><aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="Primary Sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+                <section id="user-profile-2" class="widget user-profile">
+                    <div class="widget-wrap">
+                        <h4 class="widget-title widgettitle">Meet jennifer Quisenberry, Founder and Editor-in-chief of The Awesome Muse</h4>
+                        <p><span class="alignleft"><img alt='' src='http://2.gravatar.com/avatar/2cd1ef402c6f314eed796058dbd3deba?s=85&#038;d=http%3A%2F%2Fwww.theawesomemuse.com%2Fwp-content%2Fuploads%2F2016%2F06%2FThe-Awesome-Muse-pink-gravatar-80x80.jpg&#038;r=pg' srcset='http://2.gravatar.com/avatar/2cd1ef402c6f314eed796058dbd3deba?s=170&amp;d=http%3A%2F%2Fwww.theawesomemuse.com%2Fwp-content%2Fuploads%2F2016%2F06%2FThe-Awesome-Muse-pink-gravatar-80x80.jpg&amp;r=pg 2x' class='avatar avatar-85 photo' height='85' width='85' /></span>Jennifer Quisenberry is the Founder and Editor-in-Chief of The Awesome Muse.  She is also the founder of SocialBizBabes.com and is a social influencer.  Jennifer believes in the power of using social media and her online presence for good and is thrilled to provide you with a space to celebrate all that is awesome in the world.</p>
+                        <div class="posts_link posts-link"><a href="http://www.theawesomemuse.com/author/jenniferhquisenberry/">View My Blog Posts</a></div>
+                    </div>
+                </section>
+                
+
+            </aside>
+        </div>
+    </div><nav class="nav-secondary" itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="wrap">
+            <ul id="menu-secondary" class="menu genesis-nav-menu menu-secondary">
+                <li id="menu-item-717" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-717"><a href="http://www.theawesomemuse.com/instagram/" itemprop="url"><span itemprop="name">Instagram</span></a></li>
+                <li id="menu-item-151" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-151"><a href="http://www.theawesomemuse.com/category/blog/interviews/" itemprop="url"><span itemprop="name">Interviews</span></a></li>
+                <li id="menu-item-150" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-150"><a href="http://www.theawesomemuse.com/category/blog/reviews/" itemprop="url"><span itemprop="name">Reviews</span></a></li>
+                <li id="menu-item-219" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-219"><a href="http://www.theawesomemuse.com/about/disclosures/" itemprop="url"><span itemprop="name">Disclosures</span></a></li>
+                <li id="menu-item-230" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-230"><a href="http://www.theawesomemuse.com/about/privacy-policy/" itemprop="url"><span itemprop="name">Privacy Policy</span></a></li>
+                <li id="menu-item-1161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1161"><a href="http://www.theawesomemuse.com/shop/" itemprop="url"><span itemprop="name">Shop</span></a></li>
+                <li id="menu-item-220" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-220"><a href="http://www.theawesomemuse.com/subscribe/" itemprop="url"><span itemprop="name">Subscribe</span></a></li>
+            </ul>
+        </div>
+    </nav>  
+
+
+    <div id="wpfront-scroll-top-container"><img src="http://www.theawesomemuse.com/wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="" /></div>
+    <script src="/Scripts/app.js"></script>
+   
+   
+</body>
+</html>

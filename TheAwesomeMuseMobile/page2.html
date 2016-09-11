@@ -83,158 +83,17 @@
         }
     </style>
 
-    <link href="/Content/bootstrap.css" rel="stylesheet" />
-    <link href="/Content/site.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
 
-    <script src="/Scripts/modernizr-2.8.3.js"></script>
-    <script src="/Scripts/jquery-3.1.0.js"></script>
-    <script src="/Scripts/jquery-3.1.0.js"></script>
-    <script src="/Scripts/knockout-3.4.0.js"></script>
-    <script src="/Scripts/angular-route.min.js"></script>
+    <script src="Scripts/modernizr-2.8.3.js"></script>
+    <script src="Scripts/jquery-3.1.0.js"></script>
+    <script src="Scripts/knockout-3.4.0.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
     
   
     
 
-    <script>
-
-        $(document).ready(function () {
-
-            getFeedData();
-        });
-
-
-        window.localJsonpCallback = function (data) {
-            alert("moo");
-        };
-        window.m = "";
-
-        var getFeedData = function () {
-            //alert("Hello from getFeedData");
-
-            //$.get('http://www.theawesomemuse.com/feed', function (data) {
-            //    $(data).find("entry").each(function () { // or "item" or whatever suits your feed
-            //        var el = $(this);
-
-            //        console.log("------------------------");
-            //        console.log("title      : " + el.find("title").text());
-            //        console.log("author     : " + el.find("author").text());
-            //        console.log("description: " + el.find("description").text());
-            //    });
-            //});
-
-            $("#main-ul").empty();
-            $("#main-ul").css("background-color", "yellow");
-            var mmmm = $("#main-ul")[0];
-
-
-            $.ajax({
-                type: "GET",
-                url: 'http://www.theawesomemuse.com/feed',
-                dataType : 'xml',
-                success : function(data)
-                {
-                    console.log(data);
-                    var zzz = $(data).find("item").each(function () {
-                        var el = $(this);
-                        console.log(el.find("title").text());
-                        //$("#main-div")[0].append(el.find("title"));
-                        $("#main-ul").append("<li>" + el.find("title").text() + 
-                            "<p>" + el.find("link").text() + "</p>" +
-                            "<p>" + el.find("comments").text() + "</p>" +
-                            "<p>" + el.find("pubDate").text() + "</p>" +
-                            "<p>" + el.find("description").text() + "</p>" +
-                        "</li>");
-
-                    });
-
-                },
-                error: function (xhr, status, error)
-                {
-                    console.log(error);
-                },
-              
-
-            });
-
-
-
-
-            //function jsonp(url, callback) {
-            //    var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
-            //    window[callbackName] = function (data) {
-            //        delete window[callbackName];
-            //        document.body.removeChild(script);
-            //        callback(data);
-            //    };
-
-            //    var script = document.createElement('iframe');
-            //    script.className = 'moocow';
-            //    var y = document.body.appendChild(script);
-            //    script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
-            //    //alert(script.src);
-            //    try{
-            //        var myIframe = document.getElementsByTagName('iframe')[0];
-            //        myIframe.src = script.src;
-            //        myIframe.focus();
-
-            //       // window.m = document.body.appendChild(script);
-            //        //document.body = m;
-            //        var i = 0;
-            //    }
-            //    catch (err) {
-            //        alert(err);
-            //    }
-            //}
-
-            //jsonp('https://sports.yahoo.com/mlb/rss.xml', function (data) {
-            //    alert(data);
-            //});
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //$.get({
-            //    url: 'https://www.sec.gov/rss/litigation/litreleases.xml',
-            //    success: function (feed) {
-            //        console.log(feed.title);
-            //        // do more stuff here
-            //    },
-            //    error: function(errormsg){
-            //        console.log(errormsg)
-            //    },
-            //    datatype:jsonp
-            //});
-        };
-
-        function localJsonpCallback(json) {
-            if (!json.Error) {
-                $('#resultForm').submit();
-            }
-            else {
-                $('#loading').hide();
-                $('#userForm').show();
-                alert(json.Message);
-            }
-        }
-
-
-    </script>
 
 
 
@@ -252,6 +111,16 @@
                             <nav class="nav-header" itemscope itemtype="http://schema.org/SiteNavigationElement">
                                 <ul id="menu-header" class="menu genesis-nav-menu">
                                     <li id="menu-item-58" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-58"><a href="http://theawesomemuse.com" itemprop="url"><span itemprop="name">home</span></a></li>
+                                    <li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37">
+                                        <a href="http://www.theawesomemuse.com/about/" itemprop="url"><span itemprop="name">Pages</span></a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-743" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-743"><a href="page1.html" itemprop="url"><span itemprop="name">Comment Policy</span></a></li>
+                                            <li id="menu-item-782" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-782"><a href="http://www.theawesomemuse.com/disclaimers/" itemprop="url"><span itemprop="name">Disclaimer</span></a></li>
+                                            <li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-218"><a href="http://www.theawesomemuse.com/about/disclosures/" itemprop="url"><span itemprop="name">Disclosures</span></a></li>
+                                            <li id="menu-item-231" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="http://www.theawesomemuse.com/about/privacy-policy/" itemprop="url"><span itemprop="name">Privacy Policy</span></a></li>
+                                            <li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38"><a href="http://www.theawesomemuse.com/about/terms-of-use/" itemprop="url"><span itemprop="name">Terms of Use</span></a></li>
+                                        </ul>
+                                    </li>
                                     <li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37">
                                         <a href="http://www.theawesomemuse.com/about/" itemprop="url"><span itemprop="name">About</span></a>
                                         <ul class="sub-menu">
@@ -310,15 +179,9 @@
             <main class="content">
 
                 <article class="page type-page status-publish entry" itemscope="" itemtype="http://schema.org/CreativeWork">
-                    <header class="entry-header"><h1 class="entry-title" itemprop="headline">Articles</h1></header>
+                    <header class="entry-header"><h1 class="entry-title" itemprop="headline">Knockout with RSS</h1></header>
                     <div id="main-div" class="entry-content" itemprop="text">
-                        Articles
-                        <p></p>
-                        <button onclick="getFeedData()">Click me</button> 
-                        <p></p> 
-                        <ul id="main-ul">
-
-                        </ul>
+                        
                         
                     </div>
                 </article>
@@ -345,7 +208,7 @@
 
         
 
-            </main><aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="Primary Sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+            </main><main class="sidebar sidebar-primary widget-area" role="complementary" aria-label="Primary Sidebar" itemscope itemtype="http://schema.org/WPSideBar">
                 <section id="user-profile-2" class="widget user-profile">
                     <div class="widget-wrap">
                         <h4 class="widget-title widgettitle">Meet jennifer Quisenberry, Founder and Editor-in-chief of The Awesome Muse</h4>
@@ -355,25 +218,13 @@
                 </section>
                 
 
-            </aside>
+            </main>
         </div>
-    </div><nav class="nav-secondary" itemscope itemtype="http://schema.org/SiteNavigationElement">
-        <div class="wrap">
-            <ul id="menu-secondary" class="menu genesis-nav-menu menu-secondary">
-                <li id="menu-item-717" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-717"><a href="http://www.theawesomemuse.com/instagram/" itemprop="url"><span itemprop="name">Instagram</span></a></li>
-                <li id="menu-item-151" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-151"><a href="http://www.theawesomemuse.com/category/blog/interviews/" itemprop="url"><span itemprop="name">Interviews</span></a></li>
-                <li id="menu-item-150" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-150"><a href="http://www.theawesomemuse.com/category/blog/reviews/" itemprop="url"><span itemprop="name">Reviews</span></a></li>
-                <li id="menu-item-219" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-219"><a href="http://www.theawesomemuse.com/about/disclosures/" itemprop="url"><span itemprop="name">Disclosures</span></a></li>
-                <li id="menu-item-230" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-230"><a href="http://www.theawesomemuse.com/about/privacy-policy/" itemprop="url"><span itemprop="name">Privacy Policy</span></a></li>
-                <li id="menu-item-1161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1161"><a href="http://www.theawesomemuse.com/shop/" itemprop="url"><span itemprop="name">Shop</span></a></li>
-                <li id="menu-item-220" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-220"><a href="http://www.theawesomemuse.com/subscribe/" itemprop="url"><span itemprop="name">Subscribe</span></a></li>
-            </ul>
-        </div>
-    </nav>  
+    </div>
 
 
     <div id="wpfront-scroll-top-container"><img src="http://www.theawesomemuse.com/wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="" /></div>
-    <script src="/Scripts/app.js"></script>
+    <script src="Scripts/app.js"></script>
    
    
 </body>
